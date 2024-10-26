@@ -2,6 +2,7 @@ using DataAccess.Repository;
 using DataAccess.Repository.Abstraction;
 using DataAccess.Repository.Implementation;
 using Microsoft.EntityFrameworkCore;
+using Server.Middleware;
 using Services.DataGenerator;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -29,7 +30,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+app.UseMiddleware<ExceptionHeandler>();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
